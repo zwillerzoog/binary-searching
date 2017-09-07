@@ -109,22 +109,96 @@ function findSortedNumber(array, guess, start, end=array.length) {
     
 }
 
+function deweyDecimalSearch (array, guess) {
+    //if sorted....do this....
+    // array.sort();
+    // binarySearch(array, guess, start=0, end=array.length)
+    console.log(array)
+    //if not sorted...linear
+    for(let i = 0; i < array.length; i++) {
+        if(guess === array[i].title || guess === array[i].author || guess === array[i].dewey) {
+        // if(guess === ( array[i].author || array[i].dewey)) {
+            console.log(`title: ${array[i].title}, author: ${array[i].author}, dewey: ${array[i].dewey}, is located at.....${i} `);
+        }
+    }
+    return -1;
+
+
+}
+
+
+
+
 const numbers = '89 30 25 32 72 70 51 42 25 24 53 55 78 50 13 40 48 32 26 2 14 33 45 72 56 44 21 88 27 68 15 93 98 73 28 16 46 87 28 65 38 67 16 85 63 23 69 64 91 9 70 81 27 97 82 6 88 3 7 46 13 11 64 31 26 38 28 13 17 69 90 1 6 7 64 43 9 73 80 98 46 27 22 87 49 83 6 39 42 51 54 84 34 53 78 40 14 5 76 62';
 const alternateArray = [90, 28, 1, 700, 40, 23]
+
+const library = [
+    {
+      author: 'Cowlishaw, Mike',
+      dewey: '005.133',
+      title: 'The REXX Language'
+    },
+    {
+      author: 'Sams',
+      dewey: '005.133',
+      title: 'Teach Yourself C++ In 21 Days'
+    },
+    {
+      author: 'Stroustrup., Bjarne',
+      dewey: '005.133',
+      title: 'The C++ Programming Language'
+    },
+    {
+      author: 'Crockford, Douglas',
+      dewey: '005.2762',
+      title: 'JavaScript: The Good Parts'
+    },
+    {
+      author: 'Flanagan, David',
+      dewey: '005.2762',
+      title: 'JavaScript: The Definitive Guide'
+    },
+    {
+      author: 'Schmidt, Meinhard',
+      dewey: '005.44684',
+      title: 'Windows Vista for Dummies'
+    },
+    {
+      author: 'Zondervan',
+      dewey: '220.52081',
+      title: 'NIV Study Bible'
+    },
+    {
+      author:'Humphries, Russell, Dr.',
+      dewey: '231.7652',
+      title: 'Starlight and Time'
+    },
+    {
+      author: 'Jane, Frederick Thomas',
+      dewey: '623.82509051',
+      title: 'Jane\'s Fighting Ships'
+    },
+    {
+      author: 'Norris, Chuck',
+      dewey: '796.8092',
+      title: 'The Official Chuck Norris Fact Book'
+    }
+  ];
 
 let bt = new BinaryTree();
 
 let array = [];
 
-bt.insert('3', '3');
-bt.insert('4', '4');
-bt.insert('5', '5');
-bt.insert('6', '6');
-bt.insert('0', '0');
-bt.insert('1', '1');
-bt.insert('2', '2');
+// bt.insert('3', '3');
+// bt.insert('4', '4');
+// bt.insert('5', '5');
+// bt.insert('6', '6');
+// bt.insert('0', '0');
+// bt.insert('1', '1');
+// bt.insert('2', '2');
 
+deweyDecimalSearch(library, '005.44684')
 // console.log(findUnSortedNumber(alternateArray, 23));
-console.log(findSortedNumber(numbers, 93));
+// console.log(findSortedNumber(numbers, 93));
 // console.log(depthInOrder(bt, array))
 // console.log(breadthInOrder(bt, array))
