@@ -66,26 +66,29 @@ class BinaryTree {
 //create tree first
 
 function dfsInOrder(tree, values=[]) {
-    if (this.left) {
+    
+    if (tree.left) {
         
-        console.log('this.left', this.left.value)
-        values = this.left.dfs(values);
+        // console.log('tree.left', tree.left)
+        values = dfsInOrder(tree.left, values);
         
     }
-    console.log('value: ', this.value)
-    values.push(this.value);
+    // console.log('value: ', tree.value)
+    values.push(tree.value);
    
-    if (this.right) {
-        console.log('this.right', this.right.value)
-        values = this.right.dfs(values);
+    if (tree.right) {
+        // console.log('tree.right', tree.right.value)
+        values = dfsInOrder(tree.right, values);
     }
     // console.log('values', values)
+
     return values;
 }
 
 
-let bt = new BinaryTree;
+let bt = new BinaryTree();
 
+let array = [];
 
 bt.insert('3', '3');
 bt.insert('4', '4');
@@ -95,4 +98,5 @@ bt.insert('0', '0')
 bt.insert('1', '1');
 bt.insert('2', '2');
 
-console.log(bt.bfs());
+console.log(dfsInOrder(bt, array))
+// console.log(bt.bfs());
