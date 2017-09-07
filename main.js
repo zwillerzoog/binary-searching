@@ -1,23 +1,12 @@
 'use strict';
 
-console.log('heyo')
-
 class BinaryTree {
-    // constructor(key, value) {
-    //     this.value = value;
-    //     this.left = null;
-    //     this.right = null;
-    // }
-
-    //why did this constructor work and not the provided?
-    //first children were being deleted
     constructor(key = null, value = null, parent = null) {
         this.key = key;
         this.value = value;
         this.parent = parent;
         this.left = null;
         this.right = null;
-        // console.log(parent)
       }
 
     insert(key, value) {
@@ -41,50 +30,41 @@ class BinaryTree {
                 this.right.insert(key, value);
             }
         }
-    }
-
-    
-    bfs(values=[]) {
-        const queue = [this];
-
-        while (queue.length) {
-            const node = queue.shift();
-            values.push(node.value);
-
-            if (node.left) {
-                queue.push(node.left);
-            }
-
-            if (node.right) {
-                queue.push(node.right);
-            }
-        }
-
-        return values;
-    }
+    }  
 }
-//create tree first
 
-function dfsInOrder(tree, values=[]) {
+function depthInOrder(tree, values=[]) {
     
     if (tree.left) {
-        
-        // console.log('tree.left', tree.left)
-        values = dfsInOrder(tree.left, values);
-        
+        values = depthInOrder(tree.left, values);
     }
-    // console.log('value: ', tree.value)
     values.push(tree.value);
    
     if (tree.right) {
-        // console.log('tree.right', tree.right.value)
-        values = dfsInOrder(tree.right, values);
+        values = depthInOrder(tree.right, values);
     }
-    // console.log('values', values)
 
     return values;
 }
 
+function breadthInOrder(tree, values=[]) {
+    const queue = [tree];
+    console.log(queue)
+
+    while (queue.length) {
+        const node = queue.shift();
+        values.push(node.value);
+
+        if (node.left) {
+            queue.push(node.left);
+        }
+
+        if (node.right) {
+            queue.push(node.right);
+        }
+    }
+    return values;
+}
 
 let bt = new BinaryTree();
 
@@ -98,5 +78,5 @@ bt.insert('0', '0')
 bt.insert('1', '1');
 bt.insert('2', '2');
 
-console.log(dfsInOrder(bt, array))
-// console.log(bt.bfs());
+// console.log(depthInOrder(bt, array))
+console.log(breadthInOrder(bt, array))
