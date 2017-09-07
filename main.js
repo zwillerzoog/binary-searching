@@ -104,7 +104,7 @@ function findSortedNumber(array, guess, start, end=array.length) {
         array = array.split(' ')
     }
     array.sort(function(a, b){return a - b})
-    console.log(array)
+    // console.log(array)
     binarySearch(array, guess, start=0, end=array.length)
     
 }
@@ -125,12 +125,50 @@ function deweyDecimalSearch (array, guess) {
 
 
 }
+let numberTree = new BinaryTree();
 
+function growTree(tree, data) {
+    let i, curr;
+  
+    for ( i = 0; i < data.length; i++ ) {
+      curr = data[i];
+      tree.insert(curr);
+    }
+  }
+
+
+function dfsPreOrder(tree){
+    // console.log(tree)
+    
+    if (tree.left) {
+        dfsPreOrder(tree.left);
+    }
+    if (tree.right) {
+        dfsPreOrder(tree.right);
+    }
+}
+let values = []
+function dfsInOrder(tree, values){
+    
+    let newArray;
+    if (tree.left) {
+        newArray = dfsPreOrder(tree.left);
+    }
+    // values.push(tree.left.key);
+    
+
+    if (tree.right) {
+        values.push(tree.right.key);
+        newArray = dfsPreOrder(tree.right);
+    }
+    console.log(newArray)
+    // console.log(values);
+}
 
 
 
 const numbers = '89 30 25 32 72 70 51 42 25 24 53 55 78 50 13 40 48 32 26 2 14 33 45 72 56 44 21 88 27 68 15 93 98 73 28 16 46 87 28 65 38 67 16 85 63 23 69 64 91 9 70 81 27 97 82 6 88 3 7 46 13 11 64 31 26 38 28 13 17 69 90 1 6 7 64 43 9 73 80 98 46 27 22 87 49 83 6 39 42 51 54 84 34 53 78 40 14 5 76 62';
-const alternateArray = [90, 28, 1, 700, 40, 23]
+const alternateNumberArray = [25, 15, 50, 10, 24, 35, 70, 4, 12, 18, 31, 44, 66, 90, 22];
 
 const library = [
     {
@@ -197,8 +235,12 @@ let array = [];
 // bt.insert('1', '1');
 // bt.insert('2', '2');
 
-deweyDecimalSearch(library, '005.44684')
+growTree(numberTree, alternateNumberArray)
+// dfsPreOrder(numberTree)
+dfsInOrder(numberTree, values)
+// deweyDecimalSearch(library, '005.44684')
 // console.log(findUnSortedNumber(alternateArray, 23));
 // console.log(findSortedNumber(numbers, 93));
 // console.log(depthInOrder(bt, array))
 // console.log(breadthInOrder(bt, array))
+// console.log(convertStringToTree(alternateNumberString))
