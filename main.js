@@ -10,6 +10,7 @@ class BinaryTree {
     // }
 
     //why did this constructor work and not the provided?
+    //first children were being deleted
     constructor(key = null, value = null, parent = null) {
         this.key = key;
         this.value = value;
@@ -42,25 +43,7 @@ class BinaryTree {
         }
     }
 
-    dfs(values=[]) {
-        
-        if (this.left) {
-            
-            console.log('this.left', this.left.value)
-            values = this.left.dfs(values);
-            
-        }
-        console.log('value: ', this.value)
-        values.push(this.value);
-       
-        if (this.right) {
-            console.log('this.right', this.right.value)
-            values = this.right.dfs(values);
-        }
-        // console.log('values', values)
-        return values;
-    }
-
+    
     bfs(values=[]) {
         const queue = [this];
 
@@ -80,6 +63,26 @@ class BinaryTree {
         return values;
     }
 }
+//create tree first
+
+function dfsInOrder(tree, values=[]) {
+    if (this.left) {
+        
+        console.log('this.left', this.left.value)
+        values = this.left.dfs(values);
+        
+    }
+    console.log('value: ', this.value)
+    values.push(this.value);
+   
+    if (this.right) {
+        console.log('this.right', this.right.value)
+        values = this.right.dfs(values);
+    }
+    // console.log('values', values)
+    return values;
+}
+
 
 let bt = new BinaryTree;
 
